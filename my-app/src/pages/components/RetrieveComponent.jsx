@@ -104,13 +104,9 @@ const RetrieveComponent = () => {
   const { solanaService } = useSolanaService();
   const [filteredDocuments, setFilteredDocuments] = useState([]);
   const [revokeDialogOpen, setRevokeDialogOpen] = useState(false);
-  const [selectedUserToRevoke, setSelectedUserToRevoke] = useState("");
-
-  console.log("api url:  ", process.env.NEXT_PUBLIC_SERVER_API_URL);
-
-  useEffect(() => {
-    fetchDocuments();
-  }, [solanaService]);
+  const [selectedUserToRevoke, setSelectedUserToRevoke] = useState("");      useEffect(() => {
+        fetchDocuments();
+      }, [solanaService]);
 
   useEffect(() => {
     const filtered = documents.filter(doc => 

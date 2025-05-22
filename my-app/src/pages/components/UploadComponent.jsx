@@ -55,19 +55,16 @@ const UploadComponent = () => {
         throw new Error('Invalid response from server');
       }
       
-      // Store metadata to Solana blockchain
       try {
         const fileName = customName || selectedFile.name;
         await solanaService.addDocument(fileName, data.cid, data.hash);
-        alert('File uploaded successfully and metadata stored on Solana blockchain!');
+        alert('File uploaded successfully!');
         setSelectedFile(null);
         setCustomName("");
       } catch (error) {
-        console.error('Blockchain error:', error);
-        alert(`Failed to store metadata on blockchain: ${error.message}`);
+        throw new Error(`Failed to store metadata on blockchain: ${error.message}`);
       }
     } catch (error) {
-      console.error('Upload error:', error);
       alert(`Failed to upload file: ${error.message}`);
     } finally {
       setIsUploading(false);

@@ -35,9 +35,6 @@ function Page() {
 
   const endpoint = process.env.NEXT_PUBLIC_SOLANA_API_URL || "https://api.devnet.solana.com";
 
-  console.log("solana api url", process.env.NEXT_PUBLIC_SOLANA_API_URL);
-
-  
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen" suppressHydrationWarning>

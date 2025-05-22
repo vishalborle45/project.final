@@ -23,7 +23,6 @@ export const uploadToIPFS = async (data: Buffer): Promise<string> => {
     const result = await pinata.pinFileToIPFS(stream, options);
     return result.IpfsHash;
   } catch (error: any) {
-    console.error('Pinata upload error:', error);
     throw new Error(`Failed to upload to Pinata: ${error.message}`);
   }
 };
@@ -38,7 +37,6 @@ export const retrieveFromIPFS = async (cid: string): Promise<Buffer> => {
     });
     return Buffer.from(response.data);
   } catch (error: any) {
-    console.error('Pinata retrieve error:', error);
     throw new Error(`Failed to retrieve from Pinata gateway: ${error.message}`);
   }
 };
@@ -48,9 +46,7 @@ export const deleteFromIPFS = async (cid: string): Promise<void> => {
     if (!cid) throw new Error('CID is required');
     await pinata.testAuthentication();
     await pinata.unpin(cid);
-    console.log('Successfully unpinned file from Pinata:', cid);
   } catch (error: any) {
-    console.error('Pinata unpin error:', error);
     throw new Error(`Failed to unpin from Pinata: ${error.message}`);
   }
 };

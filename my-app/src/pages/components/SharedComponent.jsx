@@ -26,7 +26,6 @@ const SharedComponent = () => {
       setSharedDocuments(docs);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching shared documents:", error);
       setLoading(false);
     }
   };
@@ -67,7 +66,6 @@ const SharedComponent = () => {
       // Return concatenated signature
       return decryptedBaseSignature + doc.fileName;
     } catch (error) {
-      console.error('Decryption error details:', error);
       throw new Error('Failed to decrypt signature');
     }
   };
@@ -108,7 +106,6 @@ const SharedComponent = () => {
       window.open(url, '_blank');
       setTimeout(() => window.URL.revokeObjectURL(url), 1000);
     } catch (error) {
-      console.error("Error viewing document:", error);
       alert(error.message || "Failed to view document");
     }
   };
@@ -149,7 +146,6 @@ const SharedComponent = () => {
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     } catch (error) {
-      console.error("Error downloading document:", error);
       alert(error.message || "Failed to download document");
     }
   };
