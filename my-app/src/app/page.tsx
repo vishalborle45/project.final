@@ -33,7 +33,10 @@ function Page() {
     setLoading(false);
   }, []);
 
-  const endpoint = "http://127.0.0.1:8899";
+  const endpoint = process.env.NEXT_PUBLIC_SOLANA_API_URL || "https://api.devnet.solana.com";
+
+  console.log("solana api url", process.env.NEXT_PUBLIC_SOLANA_API_URL);
+
   
   if (loading) {
     return (

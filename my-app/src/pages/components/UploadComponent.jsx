@@ -42,7 +42,7 @@ const UploadComponent = () => {
       formData.append('signature', signature);
       formData.append('customName', customName || selectedFile.name);
 
-      const response = await axios.post('http://localhost:5000/api/file/upload', formData, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_API_URL}/api/file/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${localStorage.getItem('token')}`,

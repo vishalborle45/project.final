@@ -34,8 +34,11 @@ const HomeComponent = () => {
 
   const fetchWalletBalance = async () => {
     try {
+
+      console.log("SOLANA RPC URL:", process.env.NEXT_PUBLIC_SOLANA_API_URL);
       if (!publicKey) return;
-      const connection = new Connection('http://localhost:8899');
+      const connection = new Connection(process.env.NEXT_PUBLIC_SOLANA_API_URL);
+      console.log("connection " , connection)
       const balance = await connection.getBalance(publicKey);
       setBalance(balance / LAMPORTS_PER_SOL);
     } catch (error) {

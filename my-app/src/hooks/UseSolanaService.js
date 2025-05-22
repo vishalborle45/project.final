@@ -29,9 +29,7 @@ export function useSolanaService(cluster = 'localnet') {
           return;
         }
 
-        // Use localhost URL for local Solana test validator
-        // Default port for solana-test-validator is 8899
-        const connectionUrl = 'http://localhost:8899';
+        const connectionUrl = process.env.NEXT_PUBLIC_SOLANA_API_URL || 'https://api.devnet.solana.com';
         const connection = new Connection(connectionUrl, 'confirmed');
         
         // Initialize the service

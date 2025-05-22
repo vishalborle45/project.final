@@ -89,7 +89,7 @@ const SharedComponent = () => {
         throw new Error("Failed to decrypt signature");
       }
 
-      const response = await axios.post(`http://localhost:5000/api/file/retrieve`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_API_URL}/api/file/retrieve`, {
         cid: doc.cid,
         fileName: doc.fileName,
         fileHash: doc.fileHash,
@@ -125,7 +125,7 @@ const SharedComponent = () => {
       // Decrypt signature
       const decryptedSignature = decryptSignature(accessKeyData, publicKey.toString(), doc);
 
-      const response = await axios.post(`http://localhost:5000/api/file/retrieve`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_API_URL}/api/file/retrieve`, {
         cid: doc.cid,
         fileName: doc.fileName,
         fileHash: doc.fileHash,

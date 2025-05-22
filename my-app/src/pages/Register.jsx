@@ -24,6 +24,8 @@ const Register = () => {
     email: "",
   });
 
+  console.log("api", process.env.NEXT_PUBLIC_SERVER_API_URL);
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

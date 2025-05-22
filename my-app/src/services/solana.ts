@@ -1,8 +1,8 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { Connection, PublicKey, Keypair } from '@solana/web3.js';
-import { DocumentStorage } from "../../../solana_program/target/types/document_storage";
-import idl from '../../../solana_program/target/idl/document_storage.json';
+import { DocumentStorage } from "../../anchor/document_storage";
+import idl from '../../anchor/document_storage.json';
 
 export class SolanaService {
   private program: Program<DocumentStorage>;

@@ -106,6 +106,8 @@ const RetrieveComponent = () => {
   const [revokeDialogOpen, setRevokeDialogOpen] = useState(false);
   const [selectedUserToRevoke, setSelectedUserToRevoke] = useState("");
 
+  console.log("api url:  ", process.env.NEXT_PUBLIC_SERVER_API_URL);
+
   useEffect(() => {
     fetchDocuments();
   }, [solanaService]);
@@ -152,7 +154,7 @@ const RetrieveComponent = () => {
       }
       const signature = baseSignature + doc.fileName;
 
-      const response = await axios.post(`http://localhost:5000/api/file/retrieve`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_API_URL}/api/file/retrieve`, {
         cid: doc.cid,
         fileName: doc.fileName,
         fileHash: doc.fileHash,
@@ -185,7 +187,7 @@ const RetrieveComponent = () => {
       }
       const signature = baseSignature + doc.fileName;
 
-      const response = await axios.post(`http://localhost:5000/api/file/retrieve`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_API_URL}/api/file/retrieve`, {
         cid: doc.cid,
         fileName: doc.fileName,
         fileHash: doc.fileHash,
@@ -220,7 +222,7 @@ const RetrieveComponent = () => {
       await solanaService.closeDocument(doc.fileName);
       
       // Then delete from IPFS through backend
-      const response = await axios.post(`http://localhost:5000/api/file/delete`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_API_URL}/api/file/delete`, {
         cid: doc.cid,
         fileName: doc.fileName,
         blockchainStatus: true
