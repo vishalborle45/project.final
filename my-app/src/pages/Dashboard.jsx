@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { getProfile } from "../services/api";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+// import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Separator } from "@/components/ui/separator";
-import { User, Upload, Download, Share, Menu, X } from "lucide-react";
+// import { Separator } from "@/components/ui/separator";
+import { User, Upload, Download, Share, Menu, X, History } from "lucide-react";
 
 // Import basic shadcn components that are likely available
 import {
   Sheet,
   SheetContent,
+  SheetHeader,
+  SheetTitle,
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
@@ -22,6 +24,7 @@ import RetrieveComponent from "./components/RetrieveComponent";
 import SharedComponent from "./components/SharedComponent";
 import ProfileComponent from "./components/ProfileComponent";
 import HomeComponent from "./components/HomeComponent.jsx";
+import TransactionsComponent from "./components/Transactions";
 
 const Dashboard = () => {
   const [profile, setProfile] = useState(null);
@@ -96,6 +99,8 @@ const Dashboard = () => {
         return <SharedComponent />;
       case "profile":
         return <ProfileComponent profile={profile} />;
+      case "transactions":
+        return <TransactionsComponent />;
       case "home":
       default:
         return <HomeComponent profile={profile} />;
@@ -148,6 +153,13 @@ const Dashboard = () => {
             onClick={closeSidebar}
           >
             Shared With You
+          </NavItem>
+          <NavItem
+            component="transactions"
+            icon={<History className="w-4 h-4" />}
+            onClick={closeSidebar}
+          >
+            Transactions
           </NavItem>
         </div>
       </div>
@@ -233,6 +245,9 @@ const Dashboard = () => {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-64 p-0">
+            <SheetHeader>
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+            </SheetHeader>
             {sidebarContent(closeSidebar)}
           </SheetContent>
         </Sheet>

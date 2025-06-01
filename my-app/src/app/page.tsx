@@ -15,7 +15,6 @@ import { Toaster } from "@/components/ui/sonner";
 import {
   ConnectionProvider,
   WalletProvider,
-  useWallet
 } from "@solana/wallet-adapter-react";
 import {
   WalletModalProvider

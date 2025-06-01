@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { Connection, PublicKey, Keypair } from '@solana/web3.js';
+import { Connection, PublicKey } from '@solana/web3.js';
 import { DocumentStorage } from "../../anchor/document_storage";
 import idl from '../../anchor/document_storage.json';
 

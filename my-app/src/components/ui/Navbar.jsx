@@ -16,7 +16,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     <nav className="border-b">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="font-bold text-xl">
-          Auth App
+          D-App
         </Link>
         <div className="space-x-4">
           {isAuthenticated ? (
