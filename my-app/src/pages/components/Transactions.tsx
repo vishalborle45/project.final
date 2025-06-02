@@ -54,8 +54,9 @@ const Transactions: React.FC = () => {
 
       const programId = new PublicKey('2aReMC6cg9RoeLrVtnXrpgaPKLo6cakpv7Ft77XQgR18');
       
-      const signatures = await connection.getSignaturesForAddress(programId, {
-        limit: 20,
+      // Get transactions specifically for the connected wallet
+      const signatures = await connection.getSignaturesForAddress(publicKey, {
+        limit: 100,
       });
 
       if (signatures.length === 0) {
