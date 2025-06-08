@@ -1,0 +1,461 @@
+{
+  "address": "2aReMC6cg9RoeLrVtnXrpgaPKLo6cakpv7Ft77XQgR18",
+  "metadata": {
+    "name": "document_storage",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_document",
+      "discriminator": [
+        199,
+        23,
+        223,
+        108,
+        14,
+        241,
+        149,
+        49
+      ],
+      "accounts": [
+        {
+          "name": "user_documents",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  100,
+                  111,
+                  99,
+                  117,
+                  109,
+                  101,
+                  110,
+                  116,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "document",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  111,
+                  99,
+                  117,
+                  109,
+                  101,
+                  110,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "arg",
+                "path": "file_name"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "owner",
+          "relations": [
+            "user_documents"
+          ]
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "file_name",
+          "type": "string"
+        },
+        {
+          "name": "cid",
+          "type": "string"
+        },
+        {
+          "name": "file_hash",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "close_document",
+      "discriminator": [
+        15,
+        249,
+        134,
+        244,
+        90,
+        126,
+        220,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "user_documents",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  100,
+                  111,
+                  99,
+                  117,
+                  109,
+                  101,
+                  110,
+                  116,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "document",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  111,
+                  99,
+                  117,
+                  109,
+                  101,
+                  110,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "account",
+                "path": "document.file_name",
+                "account": "Document"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "owner",
+          "relations": [
+            "user_documents"
+          ]
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "user_documents",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  100,
+                  111,
+                  99,
+                  117,
+                  109,
+                  101,
+                  110,
+                  116,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "revoke_access",
+      "discriminator": [
+        106,
+        128,
+        38,
+        169,
+        103,
+        238,
+        102,
+        147
+      ],
+      "accounts": [
+        {
+          "name": "document",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "recipient"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "share_document",
+      "discriminator": [
+        21,
+        207,
+        234,
+        38,
+        150,
+        61,
+        192,
+        253
+      ],
+      "accounts": [
+        {
+          "name": "document",
+          "writable": true
+        },
+        {
+          "name": "sharer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "recipient"
+        }
+      ],
+      "args": [
+        {
+          "name": "access_key",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Document",
+      "discriminator": [
+        226,
+        212,
+        133,
+        177,
+        48,
+        5,
+        171,
+        243
+      ]
+    },
+    {
+      "name": "UserDocuments",
+      "discriminator": [
+        121,
+        214,
+        242,
+        199,
+        91,
+        25,
+        103,
+        77
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NotDocumentOwner",
+      "msg": "Not the document owner"
+    },
+    {
+      "code": 6001,
+      "name": "AlreadySharedWithRecipient",
+      "msg": "Document already shared with this recipient"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidFileName",
+      "msg": "Invalid file name length"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidCID",
+      "msg": "Invalid CID length"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidHash",
+      "msg": "Invalid hash length"
+    },
+    {
+      "code": 6005,
+      "name": "RecipientNotFound",
+      "msg": "Recipient not found in shared list"
+    },
+    {
+      "code": 6006,
+      "name": "AccessKeyTooLong",
+      "msg": "Access key is too long"
+    }
+  ],
+  "types": [
+    {
+      "name": "Document",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "file_name",
+            "type": "string"
+          },
+          {
+            "name": "cid",
+            "type": "string"
+          },
+          {
+            "name": "file_hash",
+            "type": "string"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "shared_with",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "SharedWith"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SharedWith",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "recipient",
+            "type": "pubkey"
+          },
+          {
+            "name": "access_key",
+            "type": "string"
+          },
+          {
+            "name": "shared_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserDocuments",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "document_count",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}
